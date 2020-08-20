@@ -1,4 +1,7 @@
+import java.util.Scanner;
+
 public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
+    private static final Scanner scan = new Scanner(System.in);
     private static final TicTacToe ticTacToe = new TicTacToe();
     private static final Position[] directions = new Position[]{new Position(0, -1), new Position(-1, -1),
                                                                 new Position(-1, 0), new Position(1, -1)};
@@ -82,11 +85,37 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
 
     @Override
     public void initialize() {
-        System.out.println("Player1의 이름을 입력하세요: ");
-        setPlayer1(new Player());
-
-        System.out.println("Player2의 이름을 입력하세요: ");
-        setPlayer2(new Player());
+        for (int i = 1; i <= 2; i++) {
+            System.out.println("Player" + i + " 설정 " + "AI로 진행 하시겠습니까? [y/n]: ");
+            String arg;
+            boolean isAI = false, inValid = true;
+            while (inValid) {
+                arg = scan.nextLine();
+                if (arg.matches("^[yY]$")) {
+                    isAI = true;
+                    inValid = false;
+                } else if (arg.matches("^[nN]$")) {
+                    inValid = false;
+                } else {
+                    System.out.println("잘못된 입력입니다. 다시 입력해 주세요 [y/n]");
+                }
+            }
+            if (i == 1) {
+                System.out.println("Player1의 이름을 입력하세요: ");
+                if (isAI) {
+                    setPlayer1(new AIPlayer(), 'O');
+                } else {
+                    setPlayer1(new Player(), 'O');
+                }
+            } else {
+                System.out.println("Player2의 이름을 입력하세요: ");
+                if (isAI) {
+                    setPlayer2(new AIPlayer(), 'X');
+                } else {
+                    setPlayer2(new Player(), 'X');
+                }
+            }
+        }
     }
 
     @Override
@@ -112,11 +141,17 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
         return ((x >= 0 && x < board.length) && (y >= 0 && y < board[0].length));
     }
 
-    public void setPlayer1(Player player1) { ticTacToe.player1 = player1; }
+    public void setPlayer1(Player player1, char stone) {
+        this.player1 = player1;
+        this.player1.setStone(stone);
+    }
 
     public Player getPlayer1() { return player1; }
 
-    public void setPlayer2(Player player2) { this.player2 = player2; }
+    public void setPlayer2(Player player2, char stone) {
+        this.player2 = player2;
+        this.player2.setStone(stone);
+    }
 
     public Player getPlayer2() { return player2; }
 }
