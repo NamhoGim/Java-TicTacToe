@@ -5,6 +5,7 @@ public class Player implements Inputtable {
     static Position lastPos = new Position();
 
     private final String name;
+    private char stone;
     private int numWin;
 
     public Player() { this(scan.nextLine()); }
@@ -19,6 +20,10 @@ public class Player implements Inputtable {
     public int getNumWin() { return numWin; }
 
     public void setNumWin(int val) { numWin = val; }
+
+    public char getStone() { return stone; }
+
+    public void setStone(char stone) { this.stone = stone; }
 
     @Override
     public void getKeyboardInput() {
