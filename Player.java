@@ -4,9 +4,9 @@ public class Player implements Inputtable {
     private static final Scanner scan = new Scanner(System.in);
     static Position lastPos = new Position();
 
-    private final String name;
-    private char stone;
-    private int numWin;
+    protected final String name;
+    protected char stone;
+    protected int numWin;
 
     public Player() { this(scan.nextLine()); }
 
@@ -24,6 +24,15 @@ public class Player implements Inputtable {
     public char getStone() { return stone; }
 
     public void setStone(char stone) { this.stone = stone; }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", stone=" + stone +
+                ", numWin=" + numWin +
+                '}';
+    }
 
     @Override
     public void getKeyboardInput() {
