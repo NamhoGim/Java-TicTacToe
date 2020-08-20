@@ -6,6 +6,14 @@
  */
 public class Main {
     public static void main(String[] args) {
-        // Play gomoku here
+        TicTacToe ticTacToe = TicTacToe.getInstance();
+        ticTacToe.initialize();
+        ticTacToe.reset();
+
+        int i = 0;
+        while (!TicTacToe.isQuit) {
+            Player currPlayer = ((i++ % Integer.MAX_VALUE) % 2 == 0) ? ticTacToe.getPlayer1() : ticTacToe.getPlayer2();
+            ticTacToe.play(currPlayer, Player.lastPos);
+        }
     }
 }
