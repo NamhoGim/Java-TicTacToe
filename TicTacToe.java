@@ -105,14 +105,14 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
                 if (isAI) {
                     setPlayer1(new AIPlayer(), 'O');
                 } else {
-                    setPlayer1(new Player(), 'O');
+                    setPlayer1(new HumanPlayer(), 'O');
                 }
             } else {
                 System.out.println("Player2의 이름을 입력하세요: ");
                 if (isAI) {
                     setPlayer2(new AIPlayer(), 'X');
                 } else {
-                    setPlayer2(new Player(), 'X');
+                    setPlayer2(new HumanPlayer(), 'X');
                 }
             }
         }
