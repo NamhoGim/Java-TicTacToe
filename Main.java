@@ -13,7 +13,7 @@ public class Main {
         int i = 0;
         while (!TicTacToe.isQuit) {
             Player currPlayer = ((i++ % Integer.MAX_VALUE) % 2 == 0) ? ticTacToe.getPlayer1() : ticTacToe.getPlayer2();
-            ticTacToe.play(currPlayer, Player.lastPos);
+            ticTacToe.play(currPlayer);
         }
     }
 }

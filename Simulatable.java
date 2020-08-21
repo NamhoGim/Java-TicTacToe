@@ -1,5 +1,5 @@
 public interface Simulatable {
     void initialize();
-    void isFinished();
+    boolean isFinished();
     void reset();
 }

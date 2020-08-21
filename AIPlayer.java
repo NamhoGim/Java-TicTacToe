@@ -1,7 +1,28 @@
-public class AIPlayer extends Player implements Inputtable {
-    public AIPlayer() {
-        super();
+public class AIPlayer implements Player {
+    private final String name;
+    private char stone;
+    private int numWin;
+
+    public AIPlayer(String name, char stone) {
+        this.name = name;
+        this.stone = stone;
+        this.numWin = 0;
     }
+
+    @Override
+    public String getName() { return name; }
+
+    @Override
+    public int getNumWin() { return numWin; }
+
+    @Override
+    public void setNumWin(int val) { numWin = val; }
+
+    @Override
+    public char getStone() { return stone; }
+
+    @Override
+    public void setStone(char stone) { this.stone = stone; }
 
     @Override
     public String toString() {
@@ -17,8 +38,8 @@ public class AIPlayer extends Player implements Inputtable {
         Position optPosition = optimalMove(TicTacToe.board);
         int x = optPosition.getX(), y = optPosition.getY();
         TicTacToe.board[x][y] = stone;
-        lastPos.setX(x);
-        lastPos.setY(y);
+        TicTacToe ticTacToe = TicTacToe.getInstance();
+        ticTacToe.setLastPos(x, y);
     }
 
     private int evaluate(char[][] board) {
@@ -111,7 +132,6 @@ public class AIPlayer extends Player implements Inputtable {
                     int candiVal = miniMax(board, 0, false);
                     board[i][j] = '.';
 
-                    System.out.println(i + ", " + j + ", " + candiVal);
                     if (candiVal > optValue) {
                         result.setX(i);
                         result.setY(j);

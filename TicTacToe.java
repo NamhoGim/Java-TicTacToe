@@ -10,14 +10,18 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
     static char[][] board = new char[3][3];
 
     private Player player1, player2;
+    private Player currPlayer;
+    private Position lastPos;
+    private int numWin;
 
     private TicTacToe() {}
 
     public static TicTacToe getInstance() { return ticTacToe; }
 
     @Override
-    public void play(Player player, Position pos) {
-        System.out.println(player.getName() + "님의 차레 입니다.");
+    public void play(Player player) {
+        currPlayer = player;
+        System.out.println(currPlayer.getName() + "님의 차레 입니다.");
         printStatus();
         player.getKeyboardInput();
         if (isQuit) {
@@ -33,12 +37,17 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
             return;
         }
 
-        if (winCondition(pos)) {
+        if (winCondition(lastPos)) {
             printStatus();
             System.out.println(player.getName() + "의 승리 !!!");
             player.setNumWin(player.getNumWin()+1);
             System.out.println(player.getNumWin() + "번 이겼다!");
             reset();
+        }
+
+        if (isFinished()) {
+            reset();
+            isQuit = true;
         }
     }
 
@@ -93,10 +102,27 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
 
     @Override
     public void initialize() {
+        String arg;
+        boolean inValid = true;
+        System.out.println("몇 선승 플레이 하시겠습니까?");
+        while (inValid) {
+            arg = scan.nextLine();
+            if (arg.matches("^[0-9]+$")) {
+                numWin = Integer.parseInt(arg);
+                if (numWin < 1) {
+                    System.out.println("무조건 한번 이상은 이겨야 합니다.");
+                    continue;
+                }
+                inValid = false;
+            } else {
+                System.out.println("올바른 입력이 아닙니다. 다시 입력해 주세요.");
+            }
+        }
+
         for (int i = 1; i <= 2; i++) {
             System.out.println("Player" + i + " 설정 " + "AI로 진행 하시겠습니까? [y/n]: ");
-            String arg;
-            boolean isAI = false, inValid = true;
+            boolean isAI = false;
+            inValid = true;
             while (inValid) {
                 arg = scan.nextLine();
                 if (arg.matches("^[yY]$")) {
@@ -108,27 +134,34 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
                     System.out.println("잘못된 입력입니다. 다시 입력해 주세요 [y/n]");
                 }
             }
+
             if (i == 1) {
-                System.out.println("Player1의 이름을 입력하세요: ");
                 if (isAI) {
-                    setPlayer1(new AIPlayer(), 'O');
+                    setPlayer1(new AIPlayer("P1", 'O'));
                 } else {
-                    setPlayer1(new HumanPlayer(), 'O');
+                    setPlayer1(new HumanPlayer("P1", 'O'));
                 }
             } else {
-                System.out.println("Player2의 이름을 입력하세요: ");
                 if (isAI) {
-                    setPlayer2(new AIPlayer(), 'X');
+                    setPlayer2(new AIPlayer("P2", 'X'));
                 } else {
-                    setPlayer2(new HumanPlayer(), 'X');
+                    setPlayer2(new HumanPlayer("P2", 'X'));
                 }
             }
         }
+        lastPos = new Position();
     }
 
     @Override
-    public void isFinished() {
-
+    public boolean isFinished() {
+        if (player1.getNumWin() > player2.getNumWin() && player1.getNumWin() == numWin) {
+            System.out.println(player1.getName() + "님의 최종 승리!!!");
+            return true;
+        } else if (player1.getNumWin() < player2.getNumWin() && player2.getNumWin() == numWin) {
+            System.out.println(player2.getName() + "님의 최종 승리!!!");
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -149,17 +182,25 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
         return ((x >= 0 && x < board.length) && (y >= 0 && y < board[0].length));
     }
 
-    public void setPlayer1(Player player1, char stone) {
+    public void setPlayer1(Player player1) {
         this.player1 = player1;
-        this.player1.setStone(stone);
     }
 
     public Player getPlayer1() { return player1; }
 
-    public void setPlayer2(Player player2, char stone) {
+    public void setPlayer2(Player player2) {
         this.player2 = player2;
-        this.player2.setStone(stone);
     }
 
     public Player getPlayer2() { return player2; }
+
+    public Player getCurrPlayer() {
+        return currPlayer;
+    }
+
+    public Position getLastPos() { return lastPos; }
+    public void setLastPos(int x, int y) {
+        lastPos.setX(x);
+        lastPos.setY(y);
+    }
 }
