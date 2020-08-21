@@ -11,32 +11,32 @@
   </nodes>
   <notes />
   <edges>
-    <edge source="TicTacToe" target="Winnable">
-      <point x="-33.125" y="-206.5" />
-      <point x="289.125" y="127.0" />
-      <point x="242.5" y="127.0" />
-      <point x="0.0" y="29.0" />
-    </edge>
     <edge source="TicTacToe" target="Printable">
-      <point x="-99.375" y="-206.5" />
+      <point x="-99.375" y="-239.5" />
       <point x="222.875" y="127.0" />
       <point x="80.0" y="127.0" />
       <point x="0.0" y="29.0" />
     </edge>
+    <edge source="TicTacToe" target="Winnable">
+      <point x="-33.125" y="-239.5" />
+      <point x="289.125" y="127.0" />
+      <point x="242.5" y="127.0" />
+      <point x="0.0" y="29.0" />
+    </edge>
     <edge source="TicTacToe" target="Playable">
-      <point x="99.375" y="-206.5" />
+      <point x="99.375" y="-239.5" />
       <point x="421.625" y="127.0" />
       <point x="605.5" y="127.0" />
       <point x="0.0" y="29.0" />
     </edge>
     <edge source="TicTacToe" target="Simulatable">
-      <point x="33.125" y="-206.5" />
+      <point x="33.125" y="-239.5" />
       <point x="355.375" y="127.0" />
       <point x="402.0" y="127.0" />
       <point x="0.0" y="51.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="299.5000000000001" y="278.5" />
+  <settings layout="Hierarchic Group" zoom="0.8387978142076503" x="356.0" y="315.5" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>

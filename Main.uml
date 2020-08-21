@@ -7,7 +7,7 @@
   </nodes>
   <notes />
   <edges />
-  <settings layout="Hierarchic Group" zoom="2.000000000000001" x="43.500000000000114" y="17.000000000000057" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="43.5" y="17.0" />
   <SelectedNodes>
     <node>Main</node>
   </SelectedNodes>
