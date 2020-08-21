@@ -3,17 +3,17 @@
   <ID>JAVA</ID>
   <OriginalElement>Player</OriginalElement>
   <nodes>
-    <node x="0.0" y="108.0">Player</node>
-    <node x="0.0" y="0.0">Inputtable</node>
+    <node x="0.0" y="131.0">Player</node>
+    <node x="21.5" y="0.0">Inputtable</node>
   </nodes>
   <notes />
   <edges>
     <edge source="Player" target="Inputtable">
-      <point x="0.0" y="-96.5" />
-      <point x="0.0" y="29.0" />
+      <point x="0.0" y="-62.5" />
+      <point x="0.0" y="40.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="123.0" y="183.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="41.0" y="-10.5" />
   <SelectedNodes>
     <node>Player</node>
   </SelectedNodes>

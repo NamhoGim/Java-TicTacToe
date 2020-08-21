@@ -36,8 +36,10 @@
       <point x="0.0" y="51.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.8387978142076503" x="356.0" y="315.5" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="1.0" x="327.5" y="337.5" />
+  <SelectedNodes>
+    <node>TicTacToe</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
