@@ -22,11 +22,13 @@ public class AIPlayer extends Player implements Inputtable {
     }
 
     private int evaluate(char[][] board) {
+        char other = (stone == 'O') ? 'X' : 'O';
+
         for (int r = 0; r < board.length; r++) {
             if (board[r][0] == board[r][1] && board[r][1] == board[r][2]) {
                 if (board[r][0] == stone) {
                     return 10;
-                } else {
+                } else if (board[r][0] == other){
                     return -10;
                 }
             }
@@ -36,7 +38,7 @@ public class AIPlayer extends Player implements Inputtable {
             if (board[0][c] == board[1][c] && board[1][c] == board[2][c]) {
                 if (board[0][c] == stone) {
                     return 10;
-                } else {
+                } else if (board[0][c] == other) {
                     return -10;
                 }
             }
@@ -45,7 +47,7 @@ public class AIPlayer extends Player implements Inputtable {
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             if (board[0][0] == stone) {
                 return 10;
-            } else {
+            } else if (board[0][0] == other) {
                 return -10;
             }
         }
@@ -53,7 +55,7 @@ public class AIPlayer extends Player implements Inputtable {
         if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
             if (board[0][2] == stone) {
                 return 10;
-            } else {
+            } else if (board[0][2] == other) {
                 return -10;
             }
         }
