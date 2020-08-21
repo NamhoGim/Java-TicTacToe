@@ -22,6 +22,14 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
         player.getKeyboardInput();
         if (isQuit) {
             isFinished();
+            reset();
+            return;
+        }
+
+        if (!player.isMoreMoves(board)) {
+            printStatus();
+            System.out.println("무승부 입니다.");
+            reset();
             return;
         }
 

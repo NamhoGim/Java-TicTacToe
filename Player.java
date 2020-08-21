@@ -73,11 +73,22 @@ public class Player implements Inputtable {
                     continue;
                 }
 
-                TicTacToe.board[x][y] = (this == TicTacToe.getInstance().getPlayer1()) ? 'O' : 'X';
+                TicTacToe.board[x][y] = stone;
                 lastPos.setX(x);
                 lastPos.setY(y);
                 isInvalid = false;
             }
         } while(isInvalid);
+    }
+
+    public boolean isMoreMoves(char[][] board) {
+        for (char[] chars : board) {
+            for (char ch: chars) {
+                if (ch == '.') {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
