@@ -35,6 +35,10 @@
 
 ![HumanPlayer class](./HumanPlayer.png)
 
+## Class Diagram of DummyAIPlayer class
+
+![DummyAIPlayer class](./DummyAIPlayer.png)
+
 ## Class Diagram of AIPlayer class
 
 ![AIPlayer class](./AIPlayer.png)
