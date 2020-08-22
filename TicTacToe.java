@@ -135,15 +135,36 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
                 }
             }
 
+            boolean isHard = false;
+            if (isAI) {
+                System.out.println("AI Player 의 난이도를 설정해 주세요: [E(easy), H(hard)]");
+                inValid = true;
+                while (inValid) {
+                    arg = scan.nextLine();
+                    if(arg.matches("^[Ee]$")) {
+                        inValid = false;
+                    } else if(arg.matches("^[Hh]$")) {
+                        isHard = true;
+                        inValid = false;
+                    } else {
+                        System.out.println("잘못된 입력입니다. 다시 입력해 주세요 [E/H]");
+                    }
+                }
+            }
+
             if (i == 1) {
-                if (isAI) {
+                if (isAI && isHard) {
                     setPlayer1(new AIPlayer("P1", 'O'));
+                } else if (isAI) {
+                    setPlayer1(new DummyAIPlayer("P1", 'O'));
                 } else {
                     setPlayer1(new HumanPlayer("P1", 'O'));
                 }
             } else {
-                if (isAI) {
+                if (isAI && isHard) {
                     setPlayer2(new AIPlayer("P2", 'X'));
+                } else if (isAI) {
+                    setPlayer2(new DummyAIPlayer("P2", 'X'));
                 } else {
                     setPlayer2(new HumanPlayer("P2", 'X'));
                 }
