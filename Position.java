@@ -1,6 +1,5 @@
 public class Position {
     private int x, y;
-    //private int d; // represents 4 directions as integer value, 0: (0, -1), 1: (-1, -1), 2: (-1, 0), 3: (1, -1)
     private boolean blank; // indicates that current position is blank,
     // which means not being occupied by any player.
 
