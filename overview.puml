@@ -1,0 +1,165 @@
+@startuml
+title Class Diagram Overview of TicTacToe Project
+
+class TicTacToe << (S,#FF7700) Singleton >>
+class TicTacToe {
+    == fields ==
+    ..private static final ..
+    - {static} Scanner scan
+    - {static} TicTacToe ticTacToe
+    - {static} Position[] directions
+    .. static ..
+    {static} boolean isQuit = false;
+    {static} char[][] board = new char[3][3];
+    .. private ..
+    - Player player1, player2
+    - Player currPlayer
+    - Position lastPos
+    - int numWin
+    == constructor ==
+    - TicTacToe() {}
+    == methods ==
+    .. public methods ..
+    + {static} TicTacToe getInstance()
+    + void play(Player player)
+    + void printStatus()
+    + void initialize()
+    + boolean isFinished()
+    + void reset() {
+    + boolean boundaryCheck(int x, int y)
+    .. getter ..
+    + Player getWinner()
+    + Player getPlayer1()
+    + Player getPlayer2()
+    + Player getCurrPlayer()
+    + Position getLastPos()
+    .. setter ..
+    + void setPlayer1(Player player1)
+    + void setPlayer2(Player player2)
+    + void setLastPos(int x, int y)
+    .. private methods ..
+    - boolean winCondition(Position p)
+    - boolean checkSequence(Position p)
+}
+
+class TicTacToe implements Simulatable, Winnable, Playable, Printable
+
+interface Simulatable {
+    void initialize()
+    boolean isFinished()
+    void reset()
+}
+
+interface Winnable {
+    Player getWinner()
+}
+
+interface Playable {
+    void play(Player player)
+}
+
+interface Printable {
+    void printStatus()
+}
+
+interface Inputtable {
+    .. final ..
+    {static} Scanner scan
+    .. default ..
+    void getKeyboardInput()
+}
+
+TicTacToe -o Player
+TicTacToe -o Position
+DummyAIPlayer -o Position
+
+interface Player extends Inputtable
+
+interface Player {
+    String getName()
+    int getNumWin()
+    void setNumWin(int val)
+    char getStone()
+    void setStone(char stone)
+    .. default ..
+    boolean isMoreMoves(char[][] board)
+}
+
+class AIPlayer implements Player
+class DummyAIPlayer implements Player
+class HumanPlayer implements Player
+
+class AIPlayer {
+    == fields ==
+    .. final ..
+    - String name
+    .. private ..
+    - char stone;
+    - int numWin;
+    .. constructor ..
+    + AIPlayer(String name, char stone)
+    == public methods ==
+    + String getName()
+    + int getNumWin()
+    + void setNumWin(int val)
+    + char getStone()
+    + void setStone(char stone)
+    + String toString()
+}
+
+class DummyAIPlayer {
+    == fields ==
+    .. final ..
+    - {static} Position[] positions
+    - String name
+    .. private ..
+    - char stone;
+    - int numWin;
+    .. constructor ..
+    + AIPlayer(String name, char stone)
+    == public methods ==
+    + String getName()
+    + int getNumWin()
+    + void setNumWin(int val)
+    + char getStone()
+    + void setStone(char stone)
+    + String toString()
+    + void getKeyboardInput()
+}
+
+class HumanPlayer {
+    == fields ==
+    .. final ..
+    - String name
+    .. private ..
+    - char stone;
+    - int numWin;
+    .. constructor ..
+    + AIPlayer(String name, char stone)
+    == public methods ==
+    + String getName()
+    + int getNumWin()
+    + void setNumWin(int val)
+    + char getStone()
+    + void setStone(char stone)
+    + String toString()
+}
+
+class Position {
+    == private fields ==
+    - int x, y
+    - boolean blank
+    == constructor ==
+    + Position()
+    == public methods ==
+    + Position(int x, int y)
+    + Position(int x, int y, boolean b)
+    + int getX()
+    + void setX(int x)
+    + int getY()
+    + void setY(int y)
+    + boolean isBlank()
+    + String toString()
+}
+
+@enduml

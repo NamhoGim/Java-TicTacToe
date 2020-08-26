@@ -22,6 +22,9 @@
 
   - 다음 상속 관계를 이용하여 구현하시오.
     - Player 인터페이스를 구현하는 HumanPlayer와 AIPlayer 클래스를 각각 구현하여 사용하시오.
+    
+## Class Diagram Overview of TicTacToe Project
+![TicTacToe class](./overview.png)
 
 ## Class Diagram of TicTacToe class 
 
