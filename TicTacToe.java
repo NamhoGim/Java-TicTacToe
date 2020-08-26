@@ -175,11 +175,8 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
 
     @Override
     public boolean isFinished() {
-        if (player1.getNumWin() > player2.getNumWin() && player1.getNumWin() == numWin) {
-            System.out.println(player1.getName() + "님의 최종 승리!!!");
-            return true;
-        } else if (player1.getNumWin() < player2.getNumWin() && player2.getNumWin() == numWin) {
-            System.out.println(player2.getName() + "님의 최종 승리!!!");
+        if (getWinner() != null) {
+            System.out.println(getWinner() + "님의 최종 승리!!!");
             return true;
         }
         return false;
@@ -196,6 +193,11 @@ public class TicTacToe implements Simulatable, Winnable, Playable, Printable {
 
     @Override
     public Player getWinner() {
+        if (player1.getNumWin() > player2.getNumWin() && player1.getNumWin() == numWin) {
+            return player1;
+        } else if (player1.getNumWin() < player2.getNumWin() && player2.getNumWin() == numWin) {
+            return player2;
+        }
         return null;
     }
 
