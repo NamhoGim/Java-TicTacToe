@@ -3,9 +3,7 @@
 ## Contents
 
 - 틱택토 게임 구현하기 - [틱택토 레퍼런스](https://ko.wikipedia.org/wiki/%ED%8B%B1%ED%83%9D%ED%86%A0)
-  - 틱택토 게임을 UML로 설계하고, Java로 구현하시오.
-    - UML로 클래스와 인터페이스 등을 표현하고, 상속/포함 관계를 나타내시오.
-    - Java로 구현하면서 설계가 변경되는 경우, UML에 반영하시오.
+  - 틱택토 게임을 UML로 설계하고 Java로 구현
 
 - Feature: AI Player
   - 절때 지지않는 AI Player를 구현
