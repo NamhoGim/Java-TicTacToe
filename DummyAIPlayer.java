@@ -56,7 +56,7 @@ public class DummyAIPlayer implements Player {
         Random r = new Random();
         int x, y;
         do{
-            int i = r.nextInt(10);
+            int i = r.nextInt(9);
             x = positions[i].getX();
             y = positions[i].getY();
         }while(TicTacToe.board[x][y] != '.');
