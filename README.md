@@ -6,7 +6,7 @@
   - 틱택토 게임을 UML로 설계하고 Java로 구현
 
 - Feature: AI Player
-  - 절때 지지않는 AI Player를 구현
+  - 절대 지지않는 AI Player를 구현
     
 ## Class Diagram Overview of TicTacToe Project
 ![TicTacToe class](./overview.png)
